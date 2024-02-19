@@ -1,7 +1,7 @@
 #Cola doblemente circular (Tarea 2)
 #Angel Gabriel Lopez Palacios
 #Estructura de datos 2024
-#18/02/24
+#18/02/24.
 import os
 os.system('cls' if os.name == 'nt' else 'clear')
 
