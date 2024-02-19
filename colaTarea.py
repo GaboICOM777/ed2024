@@ -1,4 +1,7 @@
-# Colas "FIFO"
+# Colas "FIFO" (Tarea 1)
+#Angel Gabriel Lopez Palacios
+#Estructura de datos 2024
+#02/24
 import os
 os.system('cls' if os.name == 'nt' else 'clear')
 # Actividad de cola en atención a clientes por parte de un call center.
