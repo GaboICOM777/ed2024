@@ -1,94 +1,63 @@
-# Definición del grafo como un diccionario de listas de adyacencia
-grafo = {
-    'A': ['B', 'C'],    # Nodo A conectado a los nodos B y C
-    'B': ['C', 'D'],    # Nodo B conectado a los nodos C y D
-    'C': ['D'],         # Nodo C conectado al nodo D
-    'D': ['A']          # Nodo D conectado al nodo A
-}
+# Importar el módulo webbrowser para abrir el archivo HTML en el navegador
+import webbrowser
 
-# Función para generar el código HTML y CSS para representar el grafo
-def generar_grafo_html_css(grafo):
-    # Inicializar el código HTML y CSS
-    html = '''
-    <div class="container">
-        <h1>Angel Gabriel Lopez Palacios</h1>
-        <h2>Representacion grafica de un grafo en python</h2>
-        <h3>Estructura de datos 2024</h3>
-        <div class="grafo">
-    '''
-    css = '''
-    body, html {
-        height: 100%;
-        margin: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    .container {
-        text-align: center;
-    }
-    .grafo { 
-        display: flex; 
-        margin-top: 20px; 
-    }
-    .nodo { 
-        border: 1px solid black; 
-        margin: 10px; 
-        padding: 5px; 
-        background-color: lightblue; 
-        border-radius: 50%; 
-        width: 30px; 
-        height: 30px; 
-        text-align: center; 
-        line-height: 30px; 
-    }
-    .arista { 
-        border-top: 1px solid black; 
-        flex: 1; 
-    }
-    '''
+# Función para generar la matriz de adyacencia
+def matriz_adyacencia(vertices, aristas):
+    matriz = [[0] * len(vertices) for _ in range(len(vertices))]  # Inicializar matriz con ceros
+    for arista in aristas:
+        origen, destino = arista
+        # Marcar la conexión entre los vértices en la matriz de adyacencia
+        matriz[vertices.index(origen)][vertices.index(destino)] = 1
+        matriz[vertices.index(destino)][vertices.index(origen)] = 1
+    return matriz
 
-    # Recorrer cada nodo en el grafo
-    for nodo, vecinos in grafo.items():
-        # Agregar el nodo al HTML con su clase correspondiente
-        html += f'<div class="nodo {nodo}">{nodo}</div>'
-        # Recorrer los vecinos del nodo actual
-        for vecino in vecinos:
-            # Agregar una arista entre el nodo y su vecino
-            html += f'<div class="arista"></div>'
+# Definir los vértices y aristas del grafo
+vertices = ['A', 'B', 'C', 'D']
+aristas = [('A', 'B'), ('A', 'C'), ('B', 'C'), ('C', 'D')]
 
-    # Cerrar el contenedor del grafo en HTML
-    html += '''
-        </div>
-    </div>
-    '''
+# Generar la matriz de adyacencia
+matriz = matriz_adyacencia(vertices, aristas)
 
-    # Retornar el código HTML y CSS generados
-    return html, css
-
-# Generar el código HTML y CSS del grafo
-html_grafo, css_grafo = generar_grafo_html_css(grafo)
-
-# Combinar el código HTML y CSS en un archivo HTML
-codigo_html = f'''
+# Crear el contenido HTML
+html = """
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Grafo</title>
-    <style>{css_grafo}</style>
+    <title>Matriz de Adyacencia</title>
+    <style>
+        table {{
+            border-collapse: collapse;  /* Colapsar bordes de la tabla */
+            margin: auto;  /* Centrar la tabla */
+        }}
+        th, td {{
+            border: 1px solid black;  /* Borde de 1px sólido */
+            padding: 8px;  /* Espacio interno */
+            text-align: center;  /* Alinear contenido al centro */
+        }}
+        th {{
+            background-color: #f2f2f2;  /* Color de fondo para los encabezados */
+        }}
+    </style>
 </head>
 <body>
-    {html_grafo}
+    <h1 style="text-align: center;">Matriz de Adyacencia<br>Ángel Gabriel López Palacios<br>Estructira de datos 2024</h1>
+    <table>
+        <tr><th></th>{}</tr>  <!-- Encabezados de columna -->
+        {}  <!-- Filas de la matriz -->
+    </table>
 </body>
 </html>
-'''
+"""
 
-# Guardar el código HTML en un archivo
-with open('grafo.html', 'w') as archivo:
-    archivo.write(codigo_html)
+# Crear las filas de la tabla
+filas = ""
+for i, fila in enumerate(matriz):
+    # Agregar una fila a la tabla con valores de la matriz
+    filas += "<tr><th>{}</th>{}</tr>".format(vertices[i], "".join("<td>{}</td>".format(valor) for valor in fila))
 
-# Abrir el archivo HTML en el navegador predeterminado del sistema
-import webbrowser
-webbrowser.open('grafo.html')
+# Escribir el archivo HTML
+with open('matriz_adyacencia.html', 'w') as f:
+    f.write(html.format("".join("<th>{}</th>".format(v) for v in vertices), filas))
 
-print("Se ha generado y abierto el archivo 'grafo.html' con la representación gráfica del grafo.")
+# Abrir el archivo HTML en el navegador predeterminado
+webbrowser.open('matriz_adyacencia.html')
