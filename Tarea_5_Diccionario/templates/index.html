@@ -1,0 +1,19 @@
+<!-- index.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Compra-Venta</title>
+</head>
+<body>
+    <h1>Selecciona los productos:</h1>
+    <form action="/generar_recibo" method="post">
+        {% for producto, precio in productos.items() %}
+            <input type="checkbox" name="producto" value="{{ producto }}">{{ producto }} - ${{ precio }}<br>
+        {% endfor %}
+        <input type="submit" value="Generar Recibo">
+    </form>
+</body>
+</html>
