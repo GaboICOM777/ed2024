@@ -46,6 +46,11 @@ def generar_grafo_html_css(grafo):
         border-top: 1px solid black; 
         flex: 1; 
     }
+    img{
+     width:635px;
+     height:480px;
+     border-radius:5px;
+    }
     '''
 
     # Recorrer cada nodo en el grafo
@@ -79,6 +84,7 @@ codigo_html = f'''
 </head>
 <body>
     {html_grafo}
+    <img src = "Grafo.jpg" alt = "img">
 </body>
 </html>
 '''
