@@ -1,4 +1,4 @@
-#Conjuntos (Tarea 7)
+#Pila estructura LIFO (Tarea 8)
 #Angel Gabriel Lopez Palacios
 #Estructura de datos 2024
 #19/03/24.
