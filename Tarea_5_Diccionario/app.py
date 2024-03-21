@@ -1,5 +1,7 @@
-# app.py
-
+#Diccionario de  datos (Tarea 5)
+#Angel Gabriel Lopez Palacios
+#Estructura de datos 2024
+#10/03/24.
 from flask import Flask, request, render_template, send_file
 from diccionario_productos import productos
 from generar_recibo import generar_recibo

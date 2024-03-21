@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pila con Flask</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+        .input-container {
+            margin-bottom: 20px;
+        }
+        .btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+        }
+        .btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Pila con Flask</h1>
+        <div class="input-container">
+            <input type="text" id="elemento" name="elemento" placeholder="Ingresa un elemento">
+            <button class="btn" onclick="agregarElemento()">Agregar a la pila</button>
+        </div>
+        <div>
+            <h2>Elementos en la pila:</h2>
+            <ul>
+                {% for elemento in elementos %}
+                    <li>{{ elemento }}</li>
+                {% endfor %}
+            </ul>
+            <button class="btn" onclick="sacarElemento()">Sacar de la pila</button>
+        </div>
+    </div>
+
+    <script>
+        function agregarElemento() {
+            var elemento = document.getElementById("elemento").value;
+            if (elemento.trim() !== "") {
+                fetch("/agregar", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/x-www-form-urlencoded"
+                    },
+                    body: "elemento=" + encodeURIComponent(elemento)
+                })
+                .then(response => {
+                    location.reload();
+                });
+            }
+        }
+
+        function sacarElemento() {
+            fetch("/sacar")
+            .then(response => {
+                location.reload();
+            });
+        }
+    </script>
+</body>
+</html>

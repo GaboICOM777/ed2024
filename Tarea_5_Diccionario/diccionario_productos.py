@@ -1,5 +1,7 @@
-# diccionario_productos.py
-
+#Diccionario de  datos (Tarea 5)
+#Angel Gabriel Lopez Palacios
+#Estructura de datos 2024
+#10/03/24.
 productos = {
     "Producto 1": 10.00,
     "Producto 2": 15.00,

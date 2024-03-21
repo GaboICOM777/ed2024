@@ -1,3 +1,7 @@
+#Diccionario de  datos (Tarea 5)
+#Angel Gabriel Lopez Palacios
+#Estructura de datos 2024
+#10/03/24.
 import os
 from reportlab.lib.pagesizes import letter
 from reportlab.pdfgen import canvas

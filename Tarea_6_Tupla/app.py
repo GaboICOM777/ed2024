@@ -1,3 +1,7 @@
+#Tuplas (Tarea 6)
+#Angel Gabriel Lopez Palacios
+#Estructura de datos 2024
+#15/03/24.
 from flask import Flask, render_template, request
 
 app = Flask(__name__)
