@@ -1,3 +1,7 @@
+#Conjuntos (Tarea 7)
+#Angel Gabriel Lopez Palacios
+#Estructura de datos 2024
+#17/03/24.
 from flask import Flask, request
 
 app = Flask(__name__)
